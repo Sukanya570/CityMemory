@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CityMemory normalized civic grievance",
+  "type": "object",
+  "required": [
+    "complaint_id",
+    "category",
+    "sub_category",
+    "grievance_date_raw",
+    "ward_name",
+    "grievance_status"
+  ],
+  "properties": {
+    "complaint_id": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "sub_category": {
+      "type": "string"
+    },
+    "grievance_date_raw": {
+      "type": "string"
+    },
+    "grievance_date_valid": {
+      "type": "boolean"
+    },
+    "zone_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ward_name": {
+      "type": "string"
+    },
+    "grievance_mode": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "grievance_status": {
+      "type": "string"
+    },
+    "staff_remarks": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "staff_designation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rating": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "latitude": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Not supplied by the uploaded grievance dataset."
+    },
+    "longitude": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "description": "Not supplied by the uploaded grievance dataset."
+    }
+  }
+}

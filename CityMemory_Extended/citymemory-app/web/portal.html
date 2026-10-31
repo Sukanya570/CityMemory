@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CityMemory | Choose your portal</title><link rel="stylesheet" href="css/citizen.css">
+<style>
+body{min-height:100vh;display:grid;place-items:center;padding:28px;background:linear-gradient(135deg,#e8f1f7,#eef2f3 58%,#f7f4e9)}
+.portal{width:min(1000px,100%)}.portal-head{text-align:center;margin-bottom:34px}.portal-logo{width:58px;height:58px;margin:auto auto 15px;border-radius:16px;background:#1b2a35;color:#fff;display:grid;place-items:center;font-weight:900;font-size:20px}.portal-head h1{font:800 clamp(34px,5vw,48px) Manrope;margin:8px 0}.portal-head p{color:#61717b;max-width:620px;margin:0 auto;line-height:1.7}
+.portal-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}.portal-card{background:#fff;border:1px solid #d5dde1;border-radius:20px;padding:30px;box-shadow:0 16px 45px #1b2a3510;display:flex;flex-direction:column;min-height:290px}.portal-card .eyebrow{color:#2878b8}.portal-card h2{font:800 25px Manrope;margin:10px 0}.portal-card p{color:#61717b;line-height:1.7;flex:1}.portal-card a{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:10px;background:#1b2a35;color:white;text-decoration:none;font-weight:700}.portal-card.authority a{background:#2878b8}.portal-foot{text-align:center;color:#61717b;font-size:12px;margin-top:25px}
+@media(max-width:700px){.portal-cards{grid-template-columns:1fr}.portal-card{min-height:240px}}
+</style></head><body><main class="portal">
+<header class="portal-head"><div class="portal-logo">CM</div><p class="eyebrow">Bengaluru · Civic infrastructure memory</p><h1>Welcome to CityMemory</h1><p>A single civic platform for reporting neighbourhood issues, exploring historical grievance patterns and supporting accountable municipal action.</p></header>
+<section class="portal-cards">
+<article class="portal-card"><p class="eyebrow">01 · CITIZEN ACCESS</p><h2>Citizen Portal</h2><p>Sign in with your email, submit a civic complaint, receive a unique acknowledgement ID and privately follow its progress until resolution and verification.</p><a href="citizen.html">Continue as Citizen →</a></article>
+<article class="portal-card authority"><p class="eyebrow">02 · MUNICIPAL ACCESS</p><h2>Authority Dashboard</h2><p>Department officials can review assigned citizen complaints, update status with reasons, inspect historical ward-level grievance patterns and record field actions.</p><a href="index.html">Continue as Authority →</a></article>
+</section><footer class="portal-foot">CityMemory prototype · Historical grievance records are displayed at ward level only.</footer>
+</main></body></html>

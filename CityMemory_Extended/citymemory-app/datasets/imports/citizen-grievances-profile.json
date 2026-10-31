@@ -1,0 +1,50 @@
+{
+  "source_file": "citizen-grievances.csv.gz",
+  "rows": 1230890,
+  "columns": [
+    "Complaint ID",
+    "Category",
+    "Sub Category",
+    "Grievance Date",
+    "Zone Name",
+    "Ward Name",
+    "Grievance Mode",
+    "Grievance Status",
+    "Staff Remarks",
+    "Staff Name",
+    "Staff Designation",
+    "Rating"
+  ],
+  "unique_complaint_ids": 1230890,
+  "duplicate_complaint_ids": 0,
+  "unique_wards": 485,
+  "unique_zones": 16,
+  "unique_categories": 32,
+  "parsed_date_min": "1900-01-01 12:00:00",
+  "parsed_date_max": "2048-02-28 10:13:00",
+  "dates_2010_to_2035": 1230416,
+  "dates_before_2010": 47,
+  "dates_after_2035": 427,
+  "missing_values": {
+    "Complaint ID": 0,
+    "Category": 0,
+    "Sub Category": 0,
+    "Grievance Date": 0,
+    "Zone Name": 587,
+    "Ward Name": 0,
+    "Grievance Mode": 587,
+    "Grievance Status": 57,
+    "Staff Remarks": 23036,
+    "Staff Name": 57,
+    "Staff Designation": 587,
+    "Rating": 1190790
+  },
+  "limitations": [
+    "No latitude/longitude columns",
+    "No photograph column",
+    "No stable infrastructure asset identifier",
+    "Ward-level records must not be treated as exact-road matches",
+    "Staff names are intentionally not exposed in the public portal",
+    "Date anomalies are retained but flagged"
+  ]
+}

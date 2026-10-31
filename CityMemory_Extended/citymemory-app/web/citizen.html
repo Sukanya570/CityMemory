@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CityMemory | Public Civic Portal</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/citizen.css">
+</head>
+<body>
+<div id="citizenGate" class="login-gate" style="display:grid">
+  <div class="login-card">
+    <div class="brand-mark">CM</div><h2>CityMemory Citizen Portal</h2>
+    <p class="hint">Sign in to submit complaints and privately track your reports.</p>
+    <form id="citizenLoginForm">
+      <label>Email address<input id="citizenEmail" type="email" required placeholder="you@example.com"></label>
+      <label>Password<input id="citizenPassword" type="password" minlength="8" required placeholder="At least 8 characters"></label>
+      <button class="btn primary full" type="submit">Sign in</button>
+      <button class="btn secondary full" type="button" id="citizenRegister">Create citizen account</button>
+      <button class="btn secondary full" type="button" id="googleSignIn">Continue with Google</button>
+      <p id="citizenAuthMessage" class="form-message" role="status"></p>
+    </form>
+    <p class="small-note">Google sign-in requires OAuth credentials and is shown as a setup placeholder in this local prototype.</p>
+    <a href="index.html">Authority login →</a>
+  </div>
+</div>
+<header class="topbar">
+  <a class="brand" href="portal.html"><span class="brand-icon">CM</span><span><b>CityMemory</b><small>Public civic infrastructure memory</small></span></a>
+  <nav><a href="#explore">Explore issues</a><a href="#report">Report an issue</a><a href="#myReports">My complaints</a><span id="citizenSession"></span><button class="btn secondary" id="citizenLogout" type="button">Sign out</button><a href="index.html">Authority ↗</a></nav>
+</header>
+<main>
+  <section class="hero">
+    <div><p class="eyebrow">A shared memory for better cities</p><h1>Know your city's history.<br><em>Help prevent repeated problems.</em></h1>
+    <p>Report civic issues, explore available neighbourhood grievance history and see where problems keep returning.</p>
+    <div class="hero-actions"><a class="btn primary" href="#report">Report an issue</a><a class="btn secondary" href="#explore">Explore my neighbourhood</a></div></div>
+    <div class="hero-note"><span>01 / REPORT</span><b>One place to raise an issue</b><span>02 / REMEMBER</span><b>See related history</b><span>03 / IMPROVE</span><b>Make recurring issues visible</b></div>
+  </section>
+  <section class="metrics" id="metrics">
+    <article><strong id="mHistorical">—</strong><span>Historical grievance records</span></article>
+    <article><strong id="mWards">—</strong><span>Wards represented</span></article>
+    <article><strong id="mCategories">—</strong><span>Historical categories</span></article>
+    <article><strong id="mReports">—</strong><span>CityMemory citizen reports</span></article>
+  </section>
+  <section class="section" id="explore">
+    <div class="section-heading"><div><p class="eyebrow">Neighbourhood explorer</p><h2>Explore civic history</h2><p>Choose a ward to inspect available historical grievance records and repeated ward/category patterns.</p></div></div>
+    <div class="explorer">
+      <div class="panel search-panel"><label for="wardSelect">Select your ward</label><select id="wardSelect"><option value="">Loading wards…</option></select>
+        <label for="categorySelect">Issue category</label><select id="categorySelect"><option value="">All categories</option><option>Road / Pothole</option><option>Drainage / Waterlogging</option><option>Garbage / Waste</option><option>Streetlight / Electrical</option><option>Footpath / Encroachment</option></select>
+        <button class="btn primary full" id="loadHistory">View ward history</button>
+        <p class="small-note">Historical dataset is ward-level. It does not include GPS coordinates, so these records are not shown as exact map pins.</p>
+      </div>
+      <div class="panel results-panel"><div class="result-head"><h3>Historical records</h3><span id="historyCount">Select a ward</span></div><div id="historyList" class="history-list"><p class="muted">Select a ward to view records.</p></div></div>
+    </div>
+    <div class="panel recurrence-panel"><div class="result-head"><div><h3>Recurring ward-level patterns</h3><p class="muted">Repeated category/subcategory records. This is a signal for investigation, not proof of repeated failure at one asset.</p></div></div><div id="recurrenceList" class="pattern-grid"><p class="muted">Choose a ward to view recurrence patterns.</p></div></div>
+  </section>
+  <section class="section report-section" id="report">
+    <div class="section-heading"><div><p class="eyebrow">Citizen reporting</p><h2>Report a civic issue</h2><p>Share the problem and its neighbourhood. GPS is optional and only added if you choose to share it.</p></div></div>
+    <form id="reportForm" class="panel report-form">
+      <div class="form-grid"><label>Issue category<select name="category" id="reportCategory"><option>Auto detect</option><option>Road / Pothole</option><option>Drainage / Waterlogging</option><option>Garbage / Waste</option><option>Streetlight / Electrical</option><option>Footpath / Encroachment</option><option>Other civic issue</option></select></label>
+      <label>Ward<select name="ward_name" id="reportWard" required><option value="">Select ward</option></select></label></div>
+      <div class="form-grid"><label>Severity<select name="severity"><option>Low</option><option selected>Medium</option><option>High</option><option>Critical</option></select></label><label>Zone (optional)<input name="zone_name" placeholder="e.g. South"></label><label>Nearby landmark<input name="landmark" placeholder="Bus stop, school, road name"></label></div>
+      <label>Describe the problem<textarea name="description" required minlength="8" maxlength="1500" rows="4" placeholder="Describe what happened, how long it has been present and why it is a concern…"></textarea></label>
+      <div class="form-grid"><label>Photograph (optional)<input name="photo" type="file" accept="image/jpeg,image/png,image/webp"></label><div class="location-box"><b>Location sharing (optional)</b><p id="locationStatus">No GPS location attached.</p><button type="button" class="btn secondary" id="getLocation">Share my current GPS location</button><input type="hidden" name="latitude" id="latitude"><input type="hidden" name="longitude" id="longitude"></div></div>
+      <button class="btn primary" type="submit" id="submitReport">Submit complaint</button><p id="reportMessage" role="status" class="form-message"></p>
+    </form>
+  </section>
+  <section class="section public-reports-section" id="myReports">
+    <div class="section-heading"><div><p class="eyebrow">Community reports</p><h2>My complaints and status tracker</h2></div></div>
+    <div id="publicReports" class="report-grid"><p class="muted">Loading reports…</p></div>
+    <div id="reportMap" class="map"></div>
+    <p class="small-note">Only your own complaints are shown here. Authorities can access reports for operational processing. Historical grievance records remain ward-level.</p>
+  </section>
+</main>
+<footer><b>CityMemory</b><span>Public prototype · Historical source records are shown with their original limitations.</span><a href="portal.html">CityMemory home</a></footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="js/citizen-portal.js"></script>
+</body></html>
